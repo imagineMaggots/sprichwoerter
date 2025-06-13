@@ -12,13 +12,15 @@ jobs:
       run: |
         gh repo clone imagineMaggots/sprichwoerter
         cd "sprichwoerter"
-        path="alle.txt"
+        path="alle.md"
+        i=0
 
         iterate ()
         {
           echo "starting"
           echo ""
           for sprichwort in *; do
+            $i+=1
             echo "on: $sprichwort"
             if [[ -d $sprichwort ]]; then                         # falls es untergeordnete Ordner gibt
               cd $sprichwort
@@ -39,6 +41,7 @@ jobs:
               echo ""
 
               echo "appending contents of $sprichwort to alle.txt:"
+              echo "## Sprichwort Nummer $i" >> $path
               cat $sprichwort >> $path
               echo "success"
               echo ""
@@ -48,8 +51,10 @@ jobs:
         iterate
 
 
-        echo "Final result:\n Contents of "alle.txt"=\n"
+        echo "Finally:"
         cat $path
+
+        echo "files=${printf '%s ' ".md"}" >> $GITHUB_OUTPUT
       env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: actions/upload-artifact@v4
