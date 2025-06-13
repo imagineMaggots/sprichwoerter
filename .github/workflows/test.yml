@@ -38,7 +38,7 @@ jobs:
               echo "going back..."
               echo ""
               cd ..
-            elif [[ "$sprichwort" == "*.txt" ]]; then                        # alle txt-dateien werden als sprichwoerter behandelt
+            elif [[ "$sprichwort" =~ "*.txt" ]]; then                        # alle txt-dateien werden als sprichwoerter behandelt
               echo "contents of file $sprichwort:"
               cat $sprichwort > ${sprichwort/.txt/}.md
               echo ""
