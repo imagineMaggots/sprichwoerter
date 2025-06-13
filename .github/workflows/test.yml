@@ -1,0 +1,19 @@
+on: 
+  push: 
+    branches: update
+permissions:
+  contents: write
+jobs:
+  get_new_entries:
+    name: Get new Entry
+    runs-on: ubuntu-latest
+    steps:
+    - name: Make a file with a lot of repeated text
+      run: |
+        for i in {1..10}; do echo -n 'foobar' >> foobar.txt; done
+    - uses: actions/upload-artifact@v4
+      with:
+        name: my-artifact
+        path: foobar.txt
+        compression-level: 9 # maximum compression
+        
