@@ -16,7 +16,8 @@ jobs:
 
         iterate ()
         {
-          echo "starting\n"
+          echo "starting"
+          echo ""
           for sprichwort in *; do
             echo "on: $sprichwort"
             if [[ -d $sprichwort ]]; then                         # falls es untergeordnete Ordner gibt
@@ -24,18 +25,23 @@ jobs:
               echo "in: $cwd"
               tmp=$path
               path=${path//..*}
-              echo "$path \n"
+              echo "$path"
+              echo ""
+              
               iterate
               path=$tmp
-              echo "going back...\n"
+              echo "going back..."
+              echo ""
               cd ..
             elif [[ -f $sprichwort ]]; then                        # alle txt-dateien werden als sprichwoerter behandelt
               echo "contents of file $sprichwort:"
               cat $sprichwort
+              echo ""
 
               echo "appending contents of $sprichwort to alle.txt:"
               cat $sprichwort >> $path
-              echo "success\n"
+              echo "success"
+              echo ""
             fi
           done    
         }
