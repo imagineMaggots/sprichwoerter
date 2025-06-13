@@ -13,32 +13,25 @@ jobs:
         gh repo clone imagineMaggots/sprichwoerter
         cd "sprichwoerter"
         echo "\n" > alle.txt
+        path="alle.txt"
 
         iterate ()
         {
-          local layer=$1
-          echo "starting on layer $layer"
-          
+          echo "starting"
           for sprichwort in *; do
             echo "on $sprichwort"
             if [[ -d $sprichwort ]]; then                         # falls es untergeordnete Ordner gibt
               cd $sprichwort
-              $layer+=1
-              iterate "$layer"
+              tmp=$path
+              path=${path/alle.txt/..\/alle.txt}
+              iterate
+               path=$tmp
             elif [[ -f $sprichwort ]]; then                        # alle txt-dateien werden als sprichwoerter behandelt
-              alle=""
-              x=$layer
-              while [ $x -ge 0 ]; do
-                alle="${../alle}"
-                echo $x
-              done
-              cat $sprichwort $alle
-              echo "added $sprichwort"
+              cat $sprichwort $path
             fi
           cd .. 
           done    
         }
-        iterate 0
       env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: actions/upload-artifact@v4
