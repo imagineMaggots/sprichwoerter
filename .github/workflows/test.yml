@@ -19,7 +19,7 @@ jobs:
           local layer=$1
           echo "starting on layer $layer"
           
-          for sprichwort in *; do
+          for sprichwort in "./*"; do
             if [[ -d $sprichwort ]]; then                         # falls es untergeordnete Ordner gibt
               cd $sprichwort
               $layer+=1
