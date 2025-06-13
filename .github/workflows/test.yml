@@ -57,6 +57,10 @@ jobs:
         echo ""
         echo "Finally:"
         cat $path
+        echo $path > README.md
+        rm "$path"
+        
+        echo "files=$(printf '"%s" ' *.md)" > $GITHUB_OUTPUT
       env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
