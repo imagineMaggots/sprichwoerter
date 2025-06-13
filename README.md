@@ -1,1 +1,1 @@
-# sprichwoerter
+# Sprichwortverzeichnis
