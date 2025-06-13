@@ -31,17 +31,18 @@ jobs:
               cd ..
             elif [[ -f $sprichwort ]]; then                        # alle txt-dateien werden als sprichwoerter behandelt
               echo "contents of file $sprichwort:"
+              cat $sprichwort
+
+              echo "appending contents of $sprichwort to alle.txt:"
               cat $sprichwort >> $path
-              echo ""
-              
-              echo "contents of alle.txt"
-              cat "$path"
-              echo ""
+              echo "success\n"
             fi
           done    
         }
         iterate
 
+
+        echo "Final result:\n Contents of "alle.txt"=\n"
         cat $path
       env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
