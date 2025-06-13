@@ -25,7 +25,7 @@ jobs:
               cd $sprichwort
               $layer+=1
               iterate "$layer"
-            elif [[ $sprichwort =~ "*.txt" ]]; then              # alle txt-dateien werden als sprichwoerter behandelt
+            elif [[ -f $sprichwort ]]; then                        # alle txt-dateien werden als sprichwoerter behandelt
               alle=""
               x=$layer
               while [ $x -ge 0 ]; do
