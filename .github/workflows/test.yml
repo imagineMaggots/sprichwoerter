@@ -27,11 +27,12 @@ jobs:
               alle=""
               x=$layer
               while [ $x -ge 0 ]; do
-                alle="../$alle"
+                alle="{../$alle}"
               done
               cat $sprichwort >> ${alle.txt}
             fi
           cd .. 
+          $layer-=1
           done    
         }
         iterate 0
