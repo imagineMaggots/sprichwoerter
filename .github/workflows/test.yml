@@ -54,12 +54,11 @@ jobs:
         echo "Finally:"
         cat $path
 
-        echo "files=${printf '%s ' ".md"}" >> $GITHUB_OUTPUT
+        echo "files=$(printf '"%s" ' *.md)" > $GITHUB_OUTPUT
       env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: actions/upload-artifact@v4
       with:
-        name: my-artifact
-        path: alle.txt
-        compression-level: 9 # maximum compression
+          name: output
+          path: output
         
