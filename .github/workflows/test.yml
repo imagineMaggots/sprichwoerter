@@ -32,15 +32,13 @@ jobs:
               cd ..
             elif [[ -f $sprichwort ]]; then                        # alle txt-dateien werden als sprichwoerter behandelt
               echo "contents of file $sprichwort"
-              cat $sprichwort
+              cat "$sprichwort"
               
-              cont=cat $sprichwort
-              
-              
+              cont='cat "$sprichwort"'
               echo "$cont" >> $path
               
               echo "contents of alle.txt"
-              cat $path
+              cat "$path"
             fi
           done    
         }
