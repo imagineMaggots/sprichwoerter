@@ -40,7 +40,7 @@ jobs:
               cd ..
             elif [[ -f $sprichwort ]]; then                        # alle txt-dateien werden als sprichwoerter behandelt
               echo "contents of file $sprichwort:"
-              cat $sprichwort
+              cat $sprichwort > ${sprichwort/.txt/}.md
               echo ""
 
               echo "appending contents of $sprichwort to alle.txt:"
