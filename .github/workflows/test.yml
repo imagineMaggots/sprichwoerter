@@ -1,6 +1,6 @@
 on: 
   push: 
-    branches: update
+    branches: main
 permissions:
   contents: write
 jobs:
