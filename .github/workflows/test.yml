@@ -29,9 +29,9 @@ jobs:
               alle=""
               x=$layer
               while [ $x -ge 0 ]; do
-                alle="{../$alle}"
+                alle="${../alle}"
               done
-              cat $sprichwort >> ${alle.txt}
+              cat $sprichwort $alle
               echo "added $sprichwort"
             fi
           cd .. 
