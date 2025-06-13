@@ -22,14 +22,16 @@ jobs:
             echo "on $sprichwort"
             if [[ -d $sprichwort ]]; then                         # falls es untergeordnete Ordner gibt
               cd $sprichwort
+              echo "in $CWD"
               tmp=$path
               path=${path/alle.txt/..\/alle.txt}
               iterate
-               path=$tmp
+              path=$tmp
+              echo "going back..."
+              cd ..
             elif [[ -f $sprichwort ]]; then                        # alle txt-dateien werden als sprichwoerter behandelt
               cat $sprichwort $path
             fi
-          cd .. 
           done    
         }
         iterate
