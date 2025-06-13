@@ -54,7 +54,10 @@ jobs:
         echo "Finally:"
         cat $path
 
-        echo "files=$(printf '"%s" ' *.md)" > $GITHUB_OUTPUT
+        git add .
+        git checkout -b new
+        git commit -m "yippie"
+        git push new
       env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: actions/upload-artifact@v4
