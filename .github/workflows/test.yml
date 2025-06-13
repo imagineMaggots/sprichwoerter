@@ -11,15 +11,22 @@ jobs:
     - name: Update Glossary
       run: |
         gh repo clone imagineMaggots/sprichwoerter
+        cd sprichwoerter
         cat "" > alle.txt
-        
-        for sprichwort in sprichwoerter; do
-          if [[ -d $sprichwort]]; then                         # falls es untergeordnete Ordner gibt
-            cd $sprichwort  
-          elif [[ $sprichwort == "*.txt" ]]; then              # alle txt-dateien werden als sprichwoerter behandelt
-            cat "$sprichwort\n" >> alle.txt
-          fi
-        done
+
+        iterate ()
+        {
+          for sprichwort in *; do
+            if [[ -d $sprichwort ]]; then                         # falls es untergeordnete Ordner gibt
+              cd $sprichwort
+              iterate
+            elif [[ $sprichwort == "*.txt" ]]; then              # alle txt-dateien werden als sprichwoerter behandelt
+              cat "$sprichwort\n" >> alle.txt
+            fi
+            cd .. 
+          done    
+        }
+        iterate
       env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: actions/upload-artifact@v4
