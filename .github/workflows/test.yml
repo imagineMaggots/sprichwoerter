@@ -24,7 +24,8 @@ jobs:
               cd $sprichwort
               echo "in $CWD"
               tmp=$path
-              path=${path/alle.txt/..\/alle.txt}
+              path=${path//..*}
+              echo "$path"
               iterate
               path=$tmp
               echo "going back..."
