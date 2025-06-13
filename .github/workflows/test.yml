@@ -29,10 +29,10 @@ jobs:
               while [ $x -ge 0 ]; do
                 alle="../$alle"
               done
-              cat $sprichwort >> $alle.txt
+              cat $sprichwort >> ${alle.txt}
             fi
-            $layer-=1
-            cd .. 
+          $layer-=1
+          cd .. 
           done    
         }
         iterate 0
