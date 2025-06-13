@@ -30,6 +30,7 @@ jobs:
                 alle="{../$alle}"
               done
               cat $sprichwort >> ${alle.txt}
+              echo "added $sprichwort"
             fi
           cd .. 
           done    
