@@ -10,6 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Update Glossary
+      id: updtglssry
       run: |
         gh repo clone imagineMaggots/sprichwoerter
         cd "sprichwoerter"
@@ -54,13 +55,14 @@ jobs:
 
         echo "Finally:"
         cat $path
-
-        git commit -m "update" -b new
-        gh repo sync
       env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+    - uses: docker://pandoc/latex:3.5
+      with:
+          args: --output=output/result.pdf ${{ steps.updtglssry.outputs.files }}
     - uses: actions/upload-artifact@v4
       with:
           name: output
-          path: ${{ steps.files_list.outputs.files }}
+          path: output
         
