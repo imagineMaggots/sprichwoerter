@@ -32,7 +32,6 @@ jobs:
               cat $sprichwort >> ${alle.txt}
             fi
           cd .. 
-          $layer-=1
           done    
         }
         iterate 0
