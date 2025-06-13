@@ -8,6 +8,7 @@ jobs:
     name: Get new Entry
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
     - name: Update Glossary
       run: |
         gh repo clone imagineMaggots/sprichwoerter
