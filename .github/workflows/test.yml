@@ -30,6 +30,7 @@ jobs:
               x=$layer
               while [ $x -ge 0 ]; do
                 alle="${../alle}"
+                echo $x
               done
               cat $sprichwort $alle
               echo "added $sprichwort"
