@@ -11,7 +11,7 @@ jobs:
     - name: Update Glossary
       run: |
         gh repo clone imagineMaggots/sprichwoerter
-        cd sprichwoerter
+        cd "sprichwoerter"
         echo "\n" > alle.txt
 
         iterate ()
@@ -19,7 +19,8 @@ jobs:
           local layer=$1
           echo "starting on layer $layer"
           
-          for sprichwort in "./*"; do
+          for sprichwort in *; do
+            echo "on $sprichwort"
             if [[ -d $sprichwort ]]; then                         # falls es untergeordnete Ordner gibt
               cd $sprichwort
               $layer+=1
