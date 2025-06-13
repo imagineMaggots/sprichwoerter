@@ -20,7 +20,7 @@ jobs:
           echo "starting"
           echo ""
           for sprichwort in *; do
-            $i+=1
+            i=$i+1
             echo "on: $sprichwort"
             if [[ -d $sprichwort ]]; then                         # falls es untergeordnete Ordner gibt
               cd $sprichwort
